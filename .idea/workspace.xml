@@ -4,18 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8a02eb9-1fc5-473a-bca5-1b987978b838" name="Changes" comment="">
+    <list default="true" id="f8a02eb9-1fc5-473a-bca5-1b987978b838" name="Changes" comment="Install prettier and fix format">
+      <change afterPath="$PROJECT_DIR$/components/site-header.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/globals.css" beforeDir="false" afterPath="$PROJECT_DIR$/app/globals.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/page.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/page.tsx" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components.json" beforeDir="false" afterPath="$PROJECT_DIR$/components.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/next.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/next.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/postcss.config.mjs" beforeDir="false" afterPath="$PROJECT_DIR$/postcss.config.mjs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/tailwind.config.ts" beforeDir="false" afterPath="$PROJECT_DIR$/tailwind.config.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,6 +17,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
+  "lastFilter": {
+    "state": "OPEN",
+    "assignee": "Aman-Pandey923"
+  }
+}]]></component>
+  <component name="GithubPullRequestsUISettings"><![CDATA[{
+  "selectedUrlAndAccountId": {
+    "url": "https://github.com/Aman-Pandey923/leetcodeboard.git",
+    "accountId": "48b65175-0c77-4627-be88-9daede053644"
+  }
+}]]></component>
   <component name="ProjectColorInfo">{
   &quot;associatedIndex&quot;: 7
 }</component>
@@ -44,8 +48,9 @@
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_interpreter_path": "/usr/local/node/bin/node",
     "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "fileTemplates",
-    "ts.external.directory.path": "/opt/webstorm/plugins/javascript-plugin/jsLanguageServicesImpl/external",
+    "prettierjs.PrettierConfiguration.Package": "/home/amanp/Workspace/leetcodeboard/node_modules/prettier",
+    "settings.editor.selected.configurable": "settings.javascript.prettier",
+    "ts.external.directory.path": "/home/amanp/Workspace/leetcodeboard/node_modules/typescript/lib",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -66,11 +71,32 @@
       <updated>1719204835896</updated>
       <workItem from="1719204838929" duration="697000" />
       <workItem from="1719214725120" duration="1560000" />
-      <workItem from="1719226885337" duration="536000" />
+      <workItem from="1719226885337" duration="1708000" />
     </task>
+    <task id="LOCAL-00001" summary="Install prettier and fix format">
+      <option name="closed" value="true" />
+      <created>1719227518472</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1719227518472</updated>
+    </task>
+    <task id="LOCAL-00002" summary="Install prettier and fix format">
+      <option name="closed" value="true" />
+      <created>1719227544909</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1719227544909</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Install prettier and fix format" />
+    <option name="LAST_COMMIT_MESSAGE" value="Install prettier and fix format" />
   </component>
 </project>
