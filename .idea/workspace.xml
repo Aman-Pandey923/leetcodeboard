@@ -4,9 +4,10 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="f8a02eb9-1fc5-473a-bca5-1b987978b838" name="Changes" comment="Install prettier and fix format&#10;Added Site-Header">
+    <list default="true" id="f8a02eb9-1fc5-473a-bca5-1b987978b838" name="Changes" comment="Added navbar">
+      <change afterPath="$PROJECT_DIR$/components/main-nav.tsx" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/layout.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/app/layout.tsx" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/site-header.tsx" beforeDir="false" afterPath="$PROJECT_DIR$/components/site-header.tsx" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -70,7 +71,7 @@
       <updated>1719204835896</updated>
       <workItem from="1719204838929" duration="697000" />
       <workItem from="1719214725120" duration="1560000" />
-      <workItem from="1719226885337" duration="2673000" />
+      <workItem from="1719226885337" duration="3241000" />
     </task>
     <task id="LOCAL-00001" summary="Install prettier and fix format">
       <option name="closed" value="true" />
@@ -104,7 +105,23 @@
       <option name="project" value="LOCAL" />
       <updated>1719228815957</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="Install prettier and fix format&#10;Added Site-Header">
+      <option name="closed" value="true" />
+      <created>1719229606671</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1719229606671</updated>
+    </task>
+    <task id="LOCAL-00006" summary="Added footer site config">
+      <option name="closed" value="true" />
+      <created>1719229640757</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1719229640757</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -114,6 +131,8 @@
     <MESSAGE value="Install prettier and fix format" />
     <MESSAGE value="Merge remote-tracking branch 'origin/main'" />
     <MESSAGE value="Install prettier and fix format&#10;Added Site-Header" />
-    <option name="LAST_COMMIT_MESSAGE" value="Install prettier and fix format&#10;Added Site-Header" />
+    <MESSAGE value="Added footer site config" />
+    <MESSAGE value="Added navbar" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added navbar" />
   </component>
 </project>
