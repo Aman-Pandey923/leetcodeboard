@@ -38,6 +38,17 @@ export function MainNav() {
         >
           Problems
         </Link>
+        <Link
+          href="/Excalidraw__"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/Excalidraw__")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          testing Excalidraw
+        </Link>
       </nav>
     </div>
   )
