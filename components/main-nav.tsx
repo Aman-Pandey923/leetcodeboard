@@ -27,6 +27,17 @@ export function MainNav() {
         >
           Docs
         </Link>
+        <Link
+          href="/problems"
+          className={cn(
+            "transition-colors hover:text-foreground/80",
+            pathname?.startsWith("/problems")
+              ? "text-foreground"
+              : "text-foreground/60"
+          )}
+        >
+          Problems
+        </Link>
       </nav>
     </div>
   )
