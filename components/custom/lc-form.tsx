@@ -12,6 +12,7 @@ import {
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
+import { useRouter } from "next/navigation";
 
 const formSchema = z
   .object({
@@ -20,23 +21,27 @@ const formSchema = z
     })
 });
 
+type FormData = z.infer<typeof formSchema>;
+
 export default function Home() {
-  const form = useForm<z.infer<typeof formSchema>>({
+  const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
       problemId: ""
     },
   });
 
-  const handleSubmit = (values: z.infer<typeof formSchema>) => {
-    console.log({ values });
+  const router = useRouter();
+
+  const onSubmit = (data: FormData) => {
+    router.push(`/problems/${data.problemId}`);
   };
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
       <Form {...form}>
         <form
-          onSubmit={form.handleSubmit(handleSubmit)}
+          onSubmit={form.handleSubmit(onSubmit)}
           className="max-w-md w-full flex flex-col gap-4"
         >
           <FormField
@@ -47,7 +52,7 @@ export default function Home() {
                 <FormItem>
                   <FormLabel>Problem ID</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your Problem ID" type="problemId" {...field} />
+                    <Input placeholder="Enter your Problem ID" type="text" {...field} />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
