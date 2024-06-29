@@ -14,7 +14,7 @@ export default function Problems({
 }) {
     return (
         <main>
-            <div className='w-screen'>
+            <div className='z-100 w-screen'>
                 <ExcalidrawWrapper />
             </div>
         </main>
