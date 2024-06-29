@@ -1,22 +1,25 @@
 "use client";
 
-import { Excalidraw, convertToExcalidrawElements, WelcomeScreen, serializeAsJSON} from '@excalidraw/excalidraw'
+import { Excalidraw, WelcomeScreen, serializeAsJSON} from '@excalidraw/excalidraw'
 import { ExcalidrawElement } from '@excalidraw/excalidraw/types/element/types';
 import { AppState, BinaryFiles } from '@excalidraw/excalidraw/types/types';
 
+interface ExcalidrawWrapperProps {
+  identifier: string;
+}
 
-const ExcalidrawWrapper: React.FC = () => {
+const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ identifier }) => {
   const onChange = (
     elements: readonly ExcalidrawElement[], 
     appState: AppState,
     files: BinaryFiles
   ) => {
     const content = serializeAsJSON(elements, appState, files, "local")
-    localStorage.setItem("excalidraw", content)
+    localStorage.setItem(`excalidraw_${identifier}`, content)
   }
 
 const retrieveinitialData = () => {
-  const content = localStorage.getItem("excalidraw")
+  const content = localStorage.getItem(`excalidraw_${identifier}`)
   if (content!=null) {
     return JSON.parse(content)
   }

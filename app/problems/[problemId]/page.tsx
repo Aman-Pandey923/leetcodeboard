@@ -15,7 +15,7 @@ export default function Problems({
     return (
         <main>
             <div className='z-100 w-screen'>
-                <ExcalidrawWrapper />
+                <ExcalidrawWrapper identifier={`problem_${params.problemId}`} />
             </div>
         </main>
     )
