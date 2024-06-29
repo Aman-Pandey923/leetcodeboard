@@ -40,7 +40,7 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ identifier }) => 
 
 
   return (
-    <div className='h-screen'>
+    <div style={{width: "213.1vh", height: "100vh", zIndex: 9999, position: "relative" }} className='z-100'>
       <Excalidraw onChange={onChange} initialData={retrieveInitialData()}>
         <MainMenu>
           <MainMenu.Group title="Excalidraw items">
