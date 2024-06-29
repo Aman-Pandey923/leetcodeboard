@@ -1,15 +1,22 @@
-import { Card, CardContent } from "@/components/ui/card";
+import dynamic from 'next/dynamic';
 
-export default function ProblemPage({
+const ExcalidrawWrapper = dynamic(
+  async () => (await import('@/components/custom/ExcalidrawWrapper')).default,
+  {
+    ssr: false,
+  }
+)
+
+export default function Problems({
     params, 
 }: {
     params: {problemId: string};
 }) {
-    return <div>
-        <Card>
-            <CardContent>
-                <h1>Hello {params.problemId}</h1>
-            </CardContent>
-        </Card>
-    </div>;
+    return (
+        <main>
+            <div className='w-screen'>
+                <ExcalidrawWrapper />
+            </div>
+        </main>
+    )
 }
