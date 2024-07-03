@@ -1,27 +1,46 @@
 'use client'
-import { useState } from 'react';
-import {useSignInWithEmailAndPassword} from 'react-firebase-hooks/auth'
-import {auth} from '@/lib/firebase/crud'
+
+import { useState, useEffect } from 'react';
+import { useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
+import { auth } from '@/lib/firebase/crud';
 import { useRouter } from 'next/navigation';
+import { signIn, useSession } from 'next-auth/react';
+import { Button } from '@/components/ui/button';
 
 const SignIn = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth);
-  const router = useRouter()
+  const router = useRouter();
+  const { data: session, status } = useSession();
 
   const handleSignIn = async () => {
     try {
-        const res = await signInWithEmailAndPassword(email, password);
-        console.log({res});
-        sessionStorage.setItem('user', true)
-        setEmail('');
-        setPassword('');
-        router.push('/')
-    }catch(e){
-        console.error(e)
+      const res = await signInWithEmailAndPassword(email, password);
+      console.log({ res });
+      sessionStorage.setItem('user', 'true');
+      setEmail('');
+      setPassword('');
+      router.push('/');
+    } catch (e) {
+      console.error(e);
     }
   };
+
+  const GoogleSignIn = async () => {
+    try {
+      await signIn('google', { callbackUrl: '/' });
+    } catch (e) {
+      console.error(e);
+    }
+  };
+
+  useEffect(() => {
+    if (status === 'authenticated') {
+      sessionStorage.setItem('user', 'true');
+      router.push('/');
+    }
+  }, [status, router]);
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-900">
@@ -47,6 +66,7 @@ const SignIn = () => {
         >
           Sign In
         </button>
+        <Button onClick={GoogleSignIn}>Login With Google</Button>
       </div>
     </div>
   );
