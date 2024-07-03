@@ -1,7 +1,7 @@
-"use client";
-import * as z from "zod";
-import { useForm } from "react-hook-form";
-import { zodResolver } from "@hookform/resolvers/zod";
+"use client"
+import * as z from "zod"
+import { useForm } from "react-hook-form"
+import { zodResolver } from "@hookform/resolvers/zod"
 import {
   Form,
   FormControl,
@@ -9,33 +9,32 @@ import {
   FormItem,
   FormLabel,
   FormMessage,
-} from "@/components/ui/form";
-import { Input } from "@/components/ui/input";
-import { Button } from "@/components/ui/button";
-import { useRouter } from "next/navigation";
+} from "@/components/ui/form"
+import { Input } from "@/components/ui/input"
+import { Button } from "@/components/ui/button"
+import { useRouter } from "next/navigation"
 
-const formSchema = z
-  .object({
-    problemId: z.string().refine((val) => /^\d+$/.test(val), {
-        message: 'Problem ID must be a number',
-    })
-});
+const formSchema = z.object({
+  problemId: z.string().refine((val) => /^\d+$/.test(val), {
+    message: "Problem ID must be a number",
+  }),
+})
 
-type FormData = z.infer<typeof formSchema>;
+type FormData = z.infer<typeof formSchema>
 
 export default function Home() {
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
-      problemId: ""
+      problemId: "",
     },
-  });
+  })
 
-  const router = useRouter();
+  const router = useRouter()
 
   const onSubmit = (data: FormData) => {
-    router.push(`/problems/${data.problemId}`);
-  };
+    router.push(`/problems/${data.problemId}`)
+  }
 
   return (
     <main className="flex min-h-screen flex-col items-center justify-between p-24">
@@ -52,11 +51,15 @@ export default function Home() {
                 <FormItem>
                   <FormLabel>Problem ID</FormLabel>
                   <FormControl>
-                    <Input placeholder="Enter your Problem ID" type="text" {...field} />
+                    <Input
+                      placeholder="Enter your Problem ID"
+                      type="text"
+                      {...field}
+                    />
                   </FormControl>
                   <FormMessage />
                 </FormItem>
-              );
+              )
             }}
           />
           <Button type="submit" className="w-full">
@@ -65,5 +68,5 @@ export default function Home() {
         </form>
       </Form>
     </main>
-  );
+  )
 }

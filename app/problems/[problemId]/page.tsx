@@ -1,22 +1,22 @@
-import dynamic from 'next/dynamic';
+import dynamic from "next/dynamic"
 
 const ExcalidrawWrapper = dynamic(
-  async () => (await import('@/components/custom/ExcalidrawWrapper')).default,
+  async () => (await import("@/components/custom/ExcalidrawWrapper")).default,
   {
     ssr: false,
   }
 )
 
 export default function Problems({
-    params, 
+  params,
 }: {
-    params: {problemId: string};
+  params: { problemId: string }
 }) {
-    return (
-        <main>
-            <div>
-                <ExcalidrawWrapper identifier={`problem_${params.problemId}`} />
-            </div>
-        </main>
-    )
+  return (
+    <main>
+      <div>
+        <ExcalidrawWrapper identifier={`problem_${params.problemId}`} />
+      </div>
+    </main>
+  )
 }
