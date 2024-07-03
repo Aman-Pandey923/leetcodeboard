@@ -11,7 +11,7 @@ import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types"
 import { AppState, BinaryFiles } from "@excalidraw/excalidraw/types/types"
 import { useCallback, useState } from "react"
 import debounce from "lodash/debounce"
-import { getDocumentData, setDocumentData } from '@/lib/firebase/crud';
+import { getDocumentData, setDocumentData } from "@/lib/firebase/crud"
 
 interface ExcalidrawWrapperProps {
   identifier: string
@@ -20,7 +20,7 @@ interface ExcalidrawWrapperProps {
 const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({
   identifier,
 }) => {
-  const [initialData, setInitialData] = useState<any>(null);
+  const [initialData, setInitialData] = useState<any>(null)
 
   const saveToCloud = useCallback(
     debounce(
@@ -29,14 +29,14 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({
         appState: AppState,
         files: BinaryFiles
       ) => {
-        const content = serializeAsJSON(elements, appState, files, "local");
-        await setDocumentData("excalidraw", identifier, { content });
+        const content = serializeAsJSON(elements, appState, files, "local")
+        await setDocumentData("excalidraw", identifier, { content })
       },
       1000
     ), // Save after 1 second of inactivity
     [identifier]
   )
-  
+
   const onChange = (
     elements: readonly ExcalidrawElement[],
     appState: AppState,
@@ -46,11 +46,11 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({
   }
 
   const retrieveInitialData = async () => {
-    const docData = await getDocumentData("excalidraw", identifier);
+    const docData = await getDocumentData("excalidraw", identifier)
     if (docData && docData.content) {
-      return JSON.parse(docData.content);
+      return JSON.parse(docData.content)
     }
-    return null;
+    return null
   }
 
   return (
