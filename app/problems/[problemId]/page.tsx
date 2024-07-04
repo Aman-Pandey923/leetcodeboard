@@ -1,11 +1,13 @@
-import dynamic from "next/dynamic"
+'use client'
+
+import dynamic from "next/dynamic";
 
 const ExcalidrawWrapper = dynamic(
   async () => (await import("@/components/custom/ExcalidrawWrapper")).default,
   {
     ssr: false,
   }
-)
+);
 
 export default function Problems({
   params,
@@ -15,8 +17,9 @@ export default function Problems({
   return (
     <main>
       <div>
-        <ExcalidrawWrapper identifier={`problem_${params.problemId}`} />
+        <ExcalidrawWrapper problemId={params.problemId} />
       </div>
     </main>
-  )
+  );
 }
+
