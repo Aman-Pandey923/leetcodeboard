@@ -1,4 +1,4 @@
-'use client';
+"use client"
 
 import {
   Excalidraw,
@@ -6,23 +6,23 @@ import {
   WelcomeScreen,
   serializeAsJSON,
   restore,
-} from "@excalidraw/excalidraw";
-import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types";
-import { AppState, BinaryFiles } from "@excalidraw/excalidraw/types/types";
-import { useCallback, useState, useEffect } from "react";
-import debounce from "lodash/debounce";
-import { getDocumentData, setDocumentData } from "@/lib/firebase/crud";
-import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '@/lib/firebase/crud';
+} from "@excalidraw/excalidraw"
+import { ExcalidrawElement } from "@excalidraw/excalidraw/types/element/types"
+import { AppState, BinaryFiles } from "@excalidraw/excalidraw/types/types"
+import { useCallback, useState, useEffect } from "react"
+import debounce from "lodash/debounce"
+import { getDocumentData, setDocumentData } from "@/lib/firebase/crud"
+import { useAuthState } from "react-firebase-hooks/auth"
+import { auth } from "@/lib/firebase/crud"
 
 interface ExcalidrawWrapperProps {
-  problemId: string;
+  problemId: string
 }
 
 const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ problemId }) => {
-  const [user] = useAuthState(auth);
-  const [initialData, setInitialData] = useState<any>(null);
-  const [forceRender, setForceRender] = useState(false);
+  const [user] = useAuthState(auth)
+  const [initialData, setInitialData] = useState<any>(null)
+  const [forceRender, setForceRender] = useState(false)
 
   const saveToCloud = useCallback(
     debounce(
@@ -32,53 +32,56 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ problemId }) => {
         files: BinaryFiles
       ) => {
         if (user && problemId) {
-          const documentId = `${user.uid}_${problemId}`;
-          const content = serializeAsJSON(elements, appState, files, "local");
-          await setDocumentData(user.uid, problemId, { content });
+          const documentId = `${user.uid}_${problemId}`
+          const content = serializeAsJSON(elements, appState, files, "local")
+          await setDocumentData(user.uid, problemId, { content })
         }
       },
       1000
     ),
     [user, problemId]
-  );
+  )
 
   const onChange = (
     elements: readonly ExcalidrawElement[],
     appState: AppState,
     files: BinaryFiles
   ) => {
-    saveToCloud(elements, appState, files);
-  };
+    saveToCloud(elements, appState, files)
+  }
 
   const retrieveInitialData = async () => {
     try {
       if (user && problemId) {
-        const docData = await getDocumentData(user.uid, problemId);
+        const docData = await getDocumentData(user.uid, problemId)
         if (docData && docData.content) {
-          return JSON.parse(docData.content);
+          return JSON.parse(docData.content)
         }
       }
-      return null;
+      return null
     } catch (error) {
-      console.error(`Error retrieving initial data for problemId: ${problemId}`, error);
-      return null;
+      console.error(
+        `Error retrieving initial data for problemId: ${problemId}`,
+        error
+      )
+      return null
     }
-  };
+  }
 
   useEffect(() => {
     const fetchInitialData = async () => {
-      const data = await retrieveInitialData();
-      setInitialData(data);
-    };
+      const data = await retrieveInitialData()
+      setInitialData(data)
+    }
 
-    fetchInitialData();
+    fetchInitialData()
 
     const timer = setTimeout(() => {
-      setForceRender(true);
-    }, 6000);
+      setForceRender(true)
+    }, 6000)
 
-    return () => clearTimeout(timer);
-  }, [user, problemId]);
+    return () => clearTimeout(timer)
+  }, [user, problemId])
 
   return (
     <div
@@ -119,7 +122,7 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ problemId }) => {
         </Excalidraw>
       )}
     </div>
-  );
-};
+  )
+}
 
-export default ExcalidrawWrapper;
+export default ExcalidrawWrapper

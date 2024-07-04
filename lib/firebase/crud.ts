@@ -1,8 +1,13 @@
-import { initializeApp, getApps, getApp } from "firebase/app";
-import { getFirestore, getDoc, doc, setDoc, collection } from "firebase/firestore/lite";
-import { getAuth } from "firebase/auth";
+import { initializeApp, getApps, getApp } from "firebase/app"
+import {
+  getFirestore,
+  getDoc,
+  doc,
+  setDoc,
+  collection,
+} from "firebase/firestore/lite"
+import { getAuth } from "firebase/auth"
 
-// Define the Firebase configuration
 const firebaseConfig = {
   apiKey: process.env.NEXT_PUBLIC_API_KEY,
   authDomain: process.env.NEXT_PUBLIC_AUTH_DOMAIN,
@@ -11,45 +16,48 @@ const firebaseConfig = {
   messagingSenderId: process.env.NEXT_PUBLIC_MESSAGING_SENDER_ID,
   appId: process.env.NEXT_PUBLIC_APP_ID,
   measurementId: process.env.NEXT_PUBLIC_MEASUREMENT_ID,
-};
+}
 
-// Initialize the Firebase app
-const app = !getApps().length ? initializeApp(firebaseConfig) : getApp();
-const auth = getAuth(app);
-const db = getFirestore(app);
+const app = !getApps().length ? initializeApp(firebaseConfig) : getApp()
+const auth = getAuth(app)
+const db = getFirestore(app)
 
-// Define the types for userId, problemId, and data
-type UserId = string;
-type ProblemId = string;
+type UserId = string
+type ProblemId = string
 
 interface DocumentData {
-  content: string;
+  content: string
 }
 
-// Function to get document data from Firestore
-export async function getDocumentData(userId: UserId, problemId: ProblemId): Promise<DocumentData | null> {
+export async function getDocumentData(
+  userId: UserId,
+  problemId: ProblemId
+): Promise<DocumentData | null> {
   try {
-    const docRef = doc(db, `users/${userId}/drawings/${problemId}`);
-    const documentSnapshot = await getDoc(docRef);
+    const docRef = doc(db, `users/${userId}/drawings/${problemId}`)
+    const documentSnapshot = await getDoc(docRef)
 
     if (documentSnapshot.exists()) {
-      return documentSnapshot.data() as DocumentData;
+      return documentSnapshot.data() as DocumentData
     } else {
-      return null;
+      return null
     }
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
-// Function to set document data to Firestore
-export async function setDocumentData(userId: UserId, problemId: ProblemId, data: DocumentData): Promise<void> {
+export async function setDocumentData(
+  userId: UserId,
+  problemId: ProblemId,
+  data: DocumentData
+): Promise<void> {
   try {
-    const docRef = doc(db, `users/${userId}/drawings/${problemId}`);
-    await setDoc(docRef, data);
+    const docRef = doc(db, `users/${userId}/drawings/${problemId}`)
+    await setDoc(docRef, data)
   } catch (error) {
-    throw error;
+    throw error
   }
 }
 
-export { app, auth };
+export { app, auth }
