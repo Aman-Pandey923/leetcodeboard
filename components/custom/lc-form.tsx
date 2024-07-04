@@ -62,6 +62,9 @@ export default function Home() {
               )
             }}
           />
+          <p>
+            Redirects you to an Excalidraw Whiteboard for the above specified problem. 
+          </p>
           <Button type="submit" className="w-full">
             Submit
           </Button>

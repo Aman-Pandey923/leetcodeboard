@@ -1,9 +1,8 @@
 export const siteConfig = {
   name: "CodeBoard",
-  url: "https://ui.shadcn.com",
   description: "Virtual Whiteboard for LeetCode Problems.",
   links: {
-    twitter: "https://twitter.com/shadcn",
+    Github: "https://github.com/Aman-Pandey923",
   },
 }
 
