@@ -1,6 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle"
 import { MainNav } from "@/components/main-nav"
-import { LogOutButton } from "@/app/page"
+import { LogOutButton } from "@/components/custom/LogOutButton"
 
 export function SiteHeader() {
   return (
