@@ -9,10 +9,10 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
-          <div className="flex space-x-4">
-            <ModeToggle />
-            <LogOutButton />
-          </div>
+            <div className="flex space-x-4">
+              <ModeToggle />
+              <LogOutButton />
+            </div>
           </nav>
         </div>
       </div>

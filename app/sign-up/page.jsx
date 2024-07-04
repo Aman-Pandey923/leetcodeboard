@@ -1,14 +1,12 @@
-"use client";
+"use client"
 
-import SignUp from "@/components/custom/sign-up-form"; // Adjust the path according to your project structure
+import SignUp from "@/components/custom/sign-up-form" // Adjust the path according to your project structure
 
 const SignUpPage = () => {
-  return (
-        <SignUp />
-  );
-};
+  return <SignUp />
+}
 
-export default SignUpPage;
+export default SignUpPage
 
 // "use client"
 

@@ -1,14 +1,12 @@
-"use client";
+"use client"
 
-import SignIn from "@/components/custom/sign-in-form"; // Adjust the path according to your project structure
+import SignIn from "@/components/custom/sign-in-form" // Adjust the path according to your project structure
 
 const SignInPage = () => {
-  return (
-        <SignIn />
-  );
-};
+  return <SignIn />
+}
 
-export default SignInPage;
+export default SignInPage
 
 // "use client"
 // import { useState } from "react"
