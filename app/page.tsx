@@ -34,19 +34,23 @@ export default function Home() {
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
       <div className="relative px-6 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-lg sm:rounded-lg sm:px-10">
         <div className="flex space-x-4">
-          <Button
-            onClick={() => {
-              signOut(auth)
-              sessionStorage.removeItem("user")
-            }}
-          >
-            {" "}
-            Log Out{" "}
-          </Button>
           <Button> Hello </Button>
           <ModeToggle />
         </div>
       </div>
     </div>
+  )
+}
+
+export function LogOutButton() {
+  return (
+    <Button className="px-6 py-2 bg-red-600 hover:bg-red-700 focus:ring-4 focus:ring-red-300 rounded-lg shadow-md transition duration-150 ease-in-out transform hover:scale-105"
+      onClick={() => {
+        signOut(auth)
+        sessionStorage.removeItem("user")
+      }}
+    >
+      Log Out
+    </Button>
   )
 }

@@ -1,5 +1,5 @@
 export const siteConfig = {
-  name: "LC Board",
+  name: "CodeBoard",
   url: "https://ui.shadcn.com",
   description: "Virtual Whiteboard for LeetCode Problems.",
   links: {

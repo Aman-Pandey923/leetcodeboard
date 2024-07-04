@@ -1,5 +1,6 @@
 import { ModeToggle } from "@/components/mode-toggle"
 import { MainNav } from "@/components/main-nav"
+import { LogOutButton } from "@/app/page"
 
 export function SiteHeader() {
   return (
@@ -8,7 +9,10 @@ export function SiteHeader() {
         <MainNav />
         <div className="flex flex-1 items-center justify-between space-x-2 md:justify-end">
           <nav className="flex items-center">
+          <div className="flex space-x-4">
             <ModeToggle />
+            <LogOutButton />
+          </div>
           </nav>
         </div>
       </div>
