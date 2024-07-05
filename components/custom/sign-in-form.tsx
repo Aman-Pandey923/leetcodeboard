@@ -17,7 +17,7 @@ import { useSignInWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "@/lib/firebase/crud"
 import { useRouter } from "next/navigation"
 import Link from "next/link"
-import { useNotification } from "@/context/NotificationContext";
+import { useNotification } from "@/context/NotificationContext"
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -30,7 +30,7 @@ type FormData = z.infer<typeof formSchema>
 
 const SignIn = () => {
   const [signInWithEmailAndPassword] = useSignInWithEmailAndPassword(auth)
-  const { setNotification } = useNotification();
+  const { setNotification } = useNotification()
   const router = useRouter()
 
   const form = useForm<FormData>({
@@ -47,9 +47,10 @@ const SignIn = () => {
       console.log({ res })
       if (res) {
         sessionStorage.setItem("user", "true")
-        setNotification("Login Successful!");
+        setNotification("Login Successful!")
         router.push("/")
-      } form.reset()
+      }
+      form.reset()
     } catch (e) {
       console.error("Error:", e)
     }

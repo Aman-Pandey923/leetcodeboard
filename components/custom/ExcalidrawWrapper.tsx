@@ -90,7 +90,7 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ problemId }) => {
         height: "calc(100vh - 3.5rem)",
         zIndex: 9999,
         position: "relative",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
       className="z-100"
     >

@@ -12,36 +12,42 @@ import { useCallback } from "react"
 import debounce from "lodash/debounce"
 
 interface ExcalidrawWrapperProps {
-    identifier: string;
+  identifier: string
 }
 
-const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ identifier }) => {
-    const saveToLocalStorage = useCallback(
-        debounce((elements: readonly ExcalidrawElement[],
-          appState: AppState,
-          files: BinaryFiles
-        ) => {
-          const content = serializeAsJSON(elements, appState, files, "local");
-          localStorage.setItem(`excalidraw_${identifier}`, content);
-        }, 1000),
-        [identifier]
-    );
-
-    const onChange = (
+const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({
+  identifier,
+}) => {
+  const saveToLocalStorage = useCallback(
+    debounce(
+      (
         elements: readonly ExcalidrawElement[],
         appState: AppState,
         files: BinaryFiles
-    ) => {
-    saveToLocalStorage(elements, appState, files);
-    };
+      ) => {
+        const content = serializeAsJSON(elements, appState, files, "local")
+        localStorage.setItem(`excalidraw_${identifier}`, content)
+      },
+      1000
+    ),
+    [identifier]
+  )
 
-    const retrieveInitialData = () => {
-        const content = localStorage.getItem(`excalidraw_${identifier}`);
-        if (content != null) {
-          return JSON.parse(content);
-        }
-        return null;
-    };
+  const onChange = (
+    elements: readonly ExcalidrawElement[],
+    appState: AppState,
+    files: BinaryFiles
+  ) => {
+    saveToLocalStorage(elements, appState, files)
+  }
+
+  const retrieveInitialData = () => {
+    const content = localStorage.getItem(`excalidraw_${identifier}`)
+    if (content != null) {
+      return JSON.parse(content)
+    }
+    return null
+  }
 
   return (
     <div
@@ -50,36 +56,36 @@ const ExcalidrawWrapper: React.FC<ExcalidrawWrapperProps> = ({ identifier }) => 
         height: "calc(100vh - 3.5rem)",
         zIndex: 9999,
         position: "relative",
-        overflow: "hidden"
+        overflow: "hidden",
       }}
       className="z-100"
     >
-        <Excalidraw onChange={onChange} initialData={retrieveInitialData()}>
-          <MainMenu>
-            <MainMenu.Group title="Excalidraw items">
-              <MainMenu.DefaultItems.LoadScene />
-              <MainMenu.DefaultItems.Export />
-              <MainMenu.DefaultItems.SaveToActiveFile />
-              <MainMenu.DefaultItems.SaveAsImage />
-              <MainMenu.DefaultItems.Help />
-              <MainMenu.DefaultItems.ClearCanvas />
-            </MainMenu.Group>
-            <MainMenu.Group>
-              <MainMenu.DefaultItems.ToggleTheme />
-              <MainMenu.DefaultItems.ChangeCanvasBackground />
-            </MainMenu.Group>
-          </MainMenu>
-          <WelcomeScreen>
-            <WelcomeScreen.Center>
-              <WelcomeScreen.Center.Heading>
-                Create your Notes here!
-              </WelcomeScreen.Center.Heading>
-              <WelcomeScreen.Center.Menu>
-                <WelcomeScreen.Center.MenuItemHelp />
-              </WelcomeScreen.Center.Menu>
-            </WelcomeScreen.Center>
-          </WelcomeScreen>
-        </Excalidraw>
+      <Excalidraw onChange={onChange} initialData={retrieveInitialData()}>
+        <MainMenu>
+          <MainMenu.Group title="Excalidraw items">
+            <MainMenu.DefaultItems.LoadScene />
+            <MainMenu.DefaultItems.Export />
+            <MainMenu.DefaultItems.SaveToActiveFile />
+            <MainMenu.DefaultItems.SaveAsImage />
+            <MainMenu.DefaultItems.Help />
+            <MainMenu.DefaultItems.ClearCanvas />
+          </MainMenu.Group>
+          <MainMenu.Group>
+            <MainMenu.DefaultItems.ToggleTheme />
+            <MainMenu.DefaultItems.ChangeCanvasBackground />
+          </MainMenu.Group>
+        </MainMenu>
+        <WelcomeScreen>
+          <WelcomeScreen.Center>
+            <WelcomeScreen.Center.Heading>
+              Create your Notes here!
+            </WelcomeScreen.Center.Heading>
+            <WelcomeScreen.Center.Menu>
+              <WelcomeScreen.Center.MenuItemHelp />
+            </WelcomeScreen.Center.Menu>
+          </WelcomeScreen.Center>
+        </WelcomeScreen>
+      </Excalidraw>
     </div>
   )
 }

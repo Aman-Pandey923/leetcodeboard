@@ -16,10 +16,10 @@ import { Button } from "@/components/ui/button"
 import { useCreateUserWithEmailAndPassword } from "react-firebase-hooks/auth"
 import { auth } from "@/lib/firebase/crud"
 import Link from "next/link"
-import { useState } from "react";
-import { useRouter } from "next/navigation";
-import { CheckCircleIcon } from "@heroicons/react/solid"; 
-import { useNotification } from "@/context/NotificationContext";
+import { useState } from "react"
+import { useRouter } from "next/navigation"
+import { CheckCircleIcon } from "@heroicons/react/solid"
+import { useNotification } from "@/context/NotificationContext"
 
 const formSchema = z.object({
   email: z.string().email({ message: "Invalid email address" }),
@@ -33,10 +33,10 @@ type FormData = z.infer<typeof formSchema>
 const SignUp = () => {
   const [createUserWithEmailAndPassword, , error] =
     useCreateUserWithEmailAndPassword(auth)
-  const { setNotification } = useNotification();
-  const [success, setSuccess] = useState(false);
-  const router = useRouter();
-  
+  const { setNotification } = useNotification()
+  const [success, setSuccess] = useState(false)
+  const router = useRouter()
+
   const form = useForm<FormData>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -54,12 +54,13 @@ const SignUp = () => {
       console.log({ res })
       if (res) {
         sessionStorage.setItem("user", "true")
-        setNotification("Login Successful!");
-        setSuccess(true);
+        setNotification("Login Successful!")
+        setSuccess(true)
         setTimeout(() => {
-          router.push("/");
-        }, 2000);
-      } form.reset()
+          router.push("/")
+        }, 2000)
+      }
+      form.reset()
     } catch (e) {
       console.error("Error:", e)
     }
@@ -73,7 +74,9 @@ const SignUp = () => {
           <div className="absolute top-0 left-0 w-full h-full flex items-center justify-center bg-gray-800 bg-opacity-75">
             <div className="bg-white p-5 rounded-lg flex items-center gap-3">
               <CheckCircleIcon className="h-6 w-6 text-green-500" />
-              <span className="text-neutral-900">Sign Up Successful! Redirecting...</span>
+              <span className="text-neutral-900">
+                Sign Up Successful! Redirecting...
+              </span>
             </div>
           </div>
         )}
