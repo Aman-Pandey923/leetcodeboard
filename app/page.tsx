@@ -1,35 +1,17 @@
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect } from "react"
 import { Button } from "@/components/ui/button"
-import { ModeToggle } from "@/components/mode-toggle"
 import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "@/lib/firebase/crud"
 import { useRouter } from "next/navigation"
-import { signOut } from "firebase/auth"
 import Notification from "@/components/custom/Notification";
 import { useNotification } from "@/context/NotificationContext";
 
 export default function Home() {
   const [user] = useAuthState(auth)
   const router = useRouter()
-  const [userSession, setUserSession] = useState<string | null>(null)
   const { notification, setNotification } = useNotification();
-
-  useEffect(() => {
-    const session = sessionStorage.getItem("user")
-    setUserSession(session)
-
-    if (!user && !session) {
-      router.push("/sign-in")
-    }
-  }, [user, router])
-
-  useEffect(() => {
-    if (!user && userSession === null) {
-      router.push("/sign-in")
-    }
-  }, [user, userSession, router])
 
   console.log({ user })
 
