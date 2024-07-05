@@ -7,11 +7,14 @@ import { useAuthState } from "react-firebase-hooks/auth"
 import { auth } from "@/lib/firebase/crud"
 import { useRouter } from "next/navigation"
 import { signOut } from "firebase/auth"
+import Notification from "@/components/custom/Notification";
+import { useNotification } from "@/context/NotificationContext";
 
 export default function Home() {
   const [user] = useAuthState(auth)
   const router = useRouter()
   const [userSession, setUserSession] = useState<string | null>(null)
+  const { notification, setNotification } = useNotification();
 
   useEffect(() => {
     const session = sessionStorage.getItem("user")
@@ -30,8 +33,21 @@ export default function Home() {
 
   console.log({ user })
 
+  useEffect(() => {
+    if (notification) {
+      const timer = setTimeout(() => {
+        setNotification(null);
+      }, 3000);
+      return () => clearTimeout(timer);
+    }
+  }, [notification, setNotification]);
+
   return (
+    <div>
     <div className="relative flex min-h-screen flex-col justify-center overflow-hidden py-6 sm:py-12">
+    <div>
+      {notification && <Notification message={notification} onClose={() => setNotification(null)} />}
+    </div>
       <div className="border rounded-lg relative px-10 pt-10 pb-8 shadow-xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10">
         <div className="mb-8">
           <h1 className="text-center text-3xl font-bold">
@@ -57,6 +73,7 @@ export default function Home() {
           </Button>
         </div>
       </div>
+    </div>
     </div>
   )
 }
