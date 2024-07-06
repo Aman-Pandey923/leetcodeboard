@@ -27,8 +27,8 @@ const ProblemsPage = () => {
   }, [user, userSession, router])
 
   return (
-    <div className="min-h-screen flex items-center justify-center">
-      <div className="p-10 rounded-lg shadow-xl w-300">
+    <div className="relative min-h-screen flex items-center justify-center py-6 sm:py-12">
+      <div className="bg-opacity-90 border rounded-lg relative px-10 pt-10 pb-8 shadow-2xl ring-1 ring-gray-900/5 sm:mx-auto sm:max-w-2xl sm:rounded-lg sm:px-10">
         <h1 className="text-center text-3xl mb-5 font-bold">
           Enter Problem ID
         </h1>
